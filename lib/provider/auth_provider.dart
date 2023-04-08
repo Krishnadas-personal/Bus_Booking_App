@@ -11,29 +11,27 @@ class AuthProvider with ChangeNotifier {
   Map<String, dynamic> get authList {
     return {..._authList};
   }
-  
- String? _token;
 
-  String? _userid;
+  String? token;
+
+  String? userid;
 
   bool get isAuth {
-    return _token != null;
+    return token != null;
   }
 
+  Future<bool> autoLogin() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (!prefs.containsKey('userAuth')) {
+      return false;
+    }
+    final extractedData = json.decode(prefs.getString('userAuth')!);
+    token = extractedData['access'] as String?;
+    userid = extractedData['url_id'] as String?;
 
-
-Future<bool> autoLogin() async {
-   final prefs = await SharedPreferences.getInstance();
-   if(!prefs.containsKey('userAuth')){
-    return false;
-   }
-   final extractedData = json.decode(prefs.getString('userAuth')!) as Map<String,Object>;
-   _token = extractedData['access'] as String?;
-   _userid = extractedData['url_id'] as String?;
-   notifyListeners();
-   return true;
-
-}
+    notifyListeners();
+    return true;
+  }
 
   Future<void> authendicate(keyValues) async {
     try {

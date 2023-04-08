@@ -32,11 +32,9 @@ class _LoginScreenState extends State<LoginScreen> {
       Map<String, dynamic> auth =
           Provider.of<AuthProvider>(context, listen: false).authList;
       if (auth['status'] == true) {
-        Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-          return BusList();
-        }));
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text(auth['message'])));
+        Navigator.of(context).pushNamed(BusList.routenames);
       } else {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text(auth['message'])));
