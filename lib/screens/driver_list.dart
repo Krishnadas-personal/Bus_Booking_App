@@ -19,6 +19,11 @@ class _DriverListState extends State<DriverList> {
 
   @override
   void initState() {
+    driverListing();
+    super.initState();
+  }
+
+  void driverListing() {
     Provider.of<AuthProvider>(context, listen: false).autoLogin().then((value) {
       final token = Provider.of<AuthProvider>(context, listen: false).token;
       final apikey = Provider.of<AuthProvider>(context, listen: false).userid;
@@ -32,7 +37,6 @@ class _DriverListState extends State<DriverList> {
         });
       });
     });
-    super.initState();
   }
 
   @override
@@ -134,7 +138,9 @@ class _DriverListState extends State<DriverList> {
               MaterialPageRoute(builder: (context) {
                 return const DriverManagement();
               }),
-            );
+            ).then((_) {
+              driverListing();
+            });
           }),
     );
   }

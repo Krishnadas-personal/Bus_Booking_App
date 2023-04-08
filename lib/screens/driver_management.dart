@@ -24,7 +24,11 @@ class _DriverManagementState extends State<DriverManagement> {
       return;
     }
     _formKey.currentState?.save();
-    Provider.of<AuthProvider>(context, listen: false).autoLogin().then((_) {
+    driverSave();
+  }
+
+  void driverSave() {
+     Provider.of<AuthProvider>(context, listen: false).autoLogin().then((_) {
       final token = Provider.of<AuthProvider>(context, listen: false).token;
       final apikey = Provider.of<AuthProvider>(context, listen: false).userid;
       print(token);
