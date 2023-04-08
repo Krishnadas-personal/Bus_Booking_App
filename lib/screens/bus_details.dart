@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../constants/constant.dart';
 import '../widgets/grid.dart';
+import 'driver_list.dart';
 
 class BusDetails extends StatelessWidget {
   final String name;
@@ -27,7 +28,9 @@ class BusDetails extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(children: [
           ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, DriverList.routenames);
+            },
             contentPadding: const EdgeInsets.all(10),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
@@ -43,6 +46,7 @@ class BusDetails extends StatelessWidget {
                   fontSize: 12.0,
                 )),
             trailing: Image.asset(
+              fit: BoxFit.cover,
               "assets/${choicess[1].image}",
             ),
           ),

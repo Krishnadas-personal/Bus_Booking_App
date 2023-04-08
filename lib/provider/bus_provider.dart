@@ -7,7 +7,7 @@ import '../constants/constant.dart';
 import '../models/bus.dart';
 
 class BusProvider with ChangeNotifier {
-  List<Bus> _busList = [
+  List<Bus>  _busList = [
     Bus(
         name: "KSRTC",
         description: "Swift Scania P-series",

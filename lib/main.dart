@@ -1,10 +1,12 @@
 import 'package:bus_booking_app/provider/auth_provider.dart';
 import 'package:bus_booking_app/provider/bus_provider.dart';
+import 'package:bus_booking_app/provider/driver_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/bus_details.dart';
 import 'screens/bus_list.dart';
+import 'screens/driver_list.dart';
 import 'screens/get_started.dart';
 import 'screens/login_screen.dart';
 
@@ -24,6 +26,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => BusProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => DriverProvider(),
+        ),
       ],
       child: Consumer<AuthProvider>(
         builder: (context, auth, child) {
@@ -40,6 +45,7 @@ class MyApp extends StatelessWidget {
                     (authResult.data == false) ? GetStarted() : BusList()),
             routes: {
               BusList.routenames: (context) => BusList(),
+              DriverList.routenames: (context) => DriverList(),
             },
           );
         },
