@@ -2,35 +2,42 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 import '../constants/constant.dart';
 import '../models/bus.dart';
 
+
 class BusProvider with ChangeNotifier {
-  List<Bus>  _busList = [
+
+  final List<Bus> _busList = [
     Bus(
         name: "KSRTC",
         description: "Swift Scania P-series",
         seatCount: 28,
-        seatLayout: "1*3",
+        seatLayout: SeatLayout.oneByThree,
         image: "assets/bus.png"),
     Bus(
         name: "KSRTC",
         description: "Swift Scania P-series",
         seatCount: 32,
-        seatLayout: "2*2",
+        seatLayout: SeatLayout.twoByTwo,
         image: "assets/bus.png"),
     Bus(
         name: "KSRTC",
         description: "Swift Scania P-series",
         seatCount: 28,
-        seatLayout: "1*3",
+        seatLayout: SeatLayout.oneByThree,
         image: "assets/bus.png"),
     Bus(
         name: "KSRTC",
         description: "Swift Scania P-series",
         seatCount: 36,
-        seatLayout: "2*2",
+        seatLayout: SeatLayout.twoByTwo,
+        image: "assets/bus.png"),
+    Bus(
+        name: "KSRTC",
+        description: "Swift Scania P-series",
+        seatCount: 40,
+        seatLayout: SeatLayout.twoByTwo,
         image: "assets/bus.png"),
   ];
 
@@ -39,8 +46,6 @@ class BusProvider with ChangeNotifier {
   }
 
   Future<void> buslist(token, apikey) async {
-    print(token);
-    print(apikey);
     try {
       final url = '$baseurl/BusListApi/$apikey/';
       var response = await http.get(
@@ -50,7 +55,7 @@ class BusProvider with ChangeNotifier {
           'Authorization': 'Bearer $token',
         },
       );
-      print(response.statusCode.toString());
+
       if (response.statusCode == 200) {
         final busDetails = json.decode(response.body);
         for (var dataJson in busDetails['bus_list']) {
@@ -60,7 +65,6 @@ class BusProvider with ChangeNotifier {
         notifyListeners();
       }
     } catch (err) {
-      print(err.toString());
       throw err;
     }
   }

@@ -15,7 +15,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  Map<String, String> _authData = {
+  final Map<String, String> _authData = {
     'username': '',
     'password': '',
   };

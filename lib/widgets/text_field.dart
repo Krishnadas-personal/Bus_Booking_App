@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  final label;
+  final String label;
   final onSaved;
   final validate;
 
@@ -16,7 +16,6 @@ class CustomTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
-        
         padding: const EdgeInsets.only(left: 15.0),
         decoration: BoxDecoration(
             color: Colors.grey[300], borderRadius: BorderRadius.circular(15.0)),

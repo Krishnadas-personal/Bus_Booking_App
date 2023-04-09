@@ -47,13 +47,11 @@ class DriverProvider with ChangeNotifier {
         notifyListeners();
       }
     } catch (err) {
-      print(err.toString());
       throw err;
     }
   }
 
   Future<void> addDriver(token, apikey, driverData) async {
-    print(driverData);
     try {
       final url = '$baseurl/DriverApi/$apikey/';
       var response = await http.post(
@@ -63,14 +61,12 @@ class DriverProvider with ChangeNotifier {
           'Authorization': 'Bearer $token',
         },
       );
-      print(response.statusCode.toString());
       if (response.statusCode == 200) {
         final driverAdd = json.decode(response.body);
         _driverAdd = driverAdd as Map<String, dynamic>;
         notifyListeners();
       }
     } catch (err) {
-      print(err.toString());
       throw err;
     }
   }
@@ -87,14 +83,12 @@ class DriverProvider with ChangeNotifier {
           'Authorization': 'Bearer $token',
         },
       );
-      print(response.statusCode.toString());
       if (response.statusCode == 200) {
         final driverDelete = json.decode(response.body);
         _deleteDriver = driverDelete as Map<String, dynamic>;
         notifyListeners();
       }
     } catch (err) {
-      print(err.toString());
       throw err;
     }
   }

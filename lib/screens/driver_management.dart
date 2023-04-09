@@ -51,7 +51,7 @@ class _DriverManagementState extends State<DriverManagement> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Center(child: const Text("Add Driver")),
+        title: const Center(child: Text("Add Driver")),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

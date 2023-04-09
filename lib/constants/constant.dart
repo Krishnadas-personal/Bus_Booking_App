@@ -16,3 +16,8 @@ List<Choices> choicess = <Choices>[
         image: 'driver.png',
         color: Colors.black),
   ];
+
+  enum SeatLayout {
+  oneByThree,
+  twoByTwo,
+}

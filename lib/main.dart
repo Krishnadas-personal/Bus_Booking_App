@@ -4,11 +4,10 @@ import 'package:bus_booking_app/provider/driver_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'screens/bus_details.dart';
+
 import 'screens/bus_list.dart';
 import 'screens/driver_list.dart';
 import 'screens/get_started.dart';
-import 'screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,10 +41,10 @@ class MyApp extends StatelessWidget {
             home: FutureBuilder(
                 future: auth.autoLogin(),
                 builder: (ctx, authResult) =>
-                    (authResult.data == false) ? GetStarted() : BusList()),
+                    (authResult.data == false) ? const GetStarted() : const BusList()),
             routes: {
-              BusList.routenames: (context) => BusList(),
-              DriverList.routenames: (context) => DriverList(),
+              BusList.routenames: (context) => const BusList(),
+              DriverList.routenames: (context) => const DriverList(),
             },
           );
         },

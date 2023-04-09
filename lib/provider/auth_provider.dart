@@ -45,7 +45,6 @@ class AuthProvider with ChangeNotifier {
       );
       final authDetails = json.decode(response.body);
       _authList = authDetails as Map<String, dynamic>;
-      print(_authList.toString());
       notifyListeners();
       final prefs = await SharedPreferences.getInstance();
       final authData = json.encode({
@@ -55,7 +54,6 @@ class AuthProvider with ChangeNotifier {
       });
       prefs.setString("userAuth", authData);
     } catch (err) {
-      print(err.toString());
       throw err;
     }
   }

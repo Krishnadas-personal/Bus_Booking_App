@@ -1,3 +1,5 @@
+import '../constants/constant.dart';
+
 class Bus {
   Bus({
     required this.name,
@@ -10,7 +12,7 @@ class Bus {
   final String name;
   final String description;
   final int seatCount;
-  final String seatLayout;
+  final SeatLayout seatLayout;
   final String image;
 
   factory Bus.fromJson(Map<String, dynamic> json) => Bus(

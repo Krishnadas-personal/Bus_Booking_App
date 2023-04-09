@@ -27,8 +27,7 @@ class _DriverListState extends State<DriverList> {
     Provider.of<AuthProvider>(context, listen: false).autoLogin().then((value) {
       final token = Provider.of<AuthProvider>(context, listen: false).token;
       final apikey = Provider.of<AuthProvider>(context, listen: false).userid;
-      print(token);
-      print(apikey);
+
       Provider.of<DriverProvider>(context, listen: false)
           .driverlist(token, apikey)
           .then((_) {
@@ -59,9 +58,6 @@ class _DriverListState extends State<DriverList> {
                   itemBuilder: ((context, index) {
                     return Card(
                       child: ListTile(
-                        onTap: () {
-                          Navigator.pushNamed(context, DriverList.routenames);
-                        },
                         contentPadding: const EdgeInsets.all(10),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0)),

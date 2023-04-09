@@ -10,24 +10,7 @@ class GetStarted extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.red,
       body: Center(
-        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Text('moov',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 40.0,
-                  fontWeight: FontWeight.bold)),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon(Icons.arrow_drop_down, color: Colors.yellow, size: 50.0),
-              Text('be',
-                  style: TextStyle(
-                      color: Colors.yellow,
-                      fontSize: 40.0,
-                      fontWeight: FontWeight.bold)),
-            ],
-          )
-        ]),
+        child:Image.asset('assets/logo.png')
       ),
       bottomNavigationBar: LongButton(
           text: 'Get Started',
