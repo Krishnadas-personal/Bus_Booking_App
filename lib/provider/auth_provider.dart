@@ -46,13 +46,15 @@ class AuthProvider with ChangeNotifier {
       final authDetails = json.decode(response.body);
       _authList = authDetails as Map<String, dynamic>;
       notifyListeners();
-      final prefs = await SharedPreferences.getInstance();
-      final authData = json.encode({
-        "refresh": _authList['refresh'],
-        "access": _authList["access"],
-        "url_id": _authList["url_id"]
-      });
-      prefs.setString("userAuth", authData);
+      if (_authList['status'] == true) {
+        final prefs = await SharedPreferences.getInstance();
+        final authData = json.encode({
+          "refresh": _authList['refresh'],
+          "access": _authList["access"],
+          "url_id": _authList["url_id"]
+        });
+        prefs.setString("userAuth", authData);
+      }
     } catch (err) {
       throw err;
     }
