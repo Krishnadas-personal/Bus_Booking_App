@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'screens/bus_list.dart';
 import 'screens/driver_list.dart';
 import 'screens/get_started.dart';
+import 'screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
                 builder: (ctx, authResult) =>
                     (authResult.data == false) ? const GetStarted() : const BusList()),
             routes: {
+              LoginScreen.routenames: (context) => const LoginScreen(),
               BusList.routenames: (context) => const BusList(),
               DriverList.routenames: (context) => const DriverList(),
             },

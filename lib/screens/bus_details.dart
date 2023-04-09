@@ -36,19 +36,19 @@ class BusDetails extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0)),
               tileColor: Theme.of(context).primaryColor,
-              title: Text(choicess[1].title,
-                  style: const TextStyle(
+              title: const Text("Rohit Sharma",
+                  style: TextStyle(
                       color: Colors.white,
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold)),
-              subtitle: Text(choicess[1].subtitle,
-                  style: const TextStyle(
+              subtitle: const Text("License no : PJ515196161655",
+                  style: TextStyle(
                     color: Colors.white,
                     fontSize: 12.0,
                   )),
               trailing: Image.asset(
-                fit: BoxFit.cover,
-                "assets/${choicess[1].image}",
+       
+                "assets/driver.png",
               ),
             ),
             seatingLayout()

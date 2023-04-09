@@ -17,11 +17,7 @@ class GetStarted extends StatelessWidget {
           buttonColor: Colors.white,
           textColor: Colors.red,
           onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) {
-                return const LoginScreen();
-              }),
-            );
+               Navigator.of(context).pushReplacementNamed(LoginScreen.routenames);
           }),
     );
   }

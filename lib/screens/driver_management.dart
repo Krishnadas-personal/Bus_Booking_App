@@ -28,11 +28,9 @@ class _DriverManagementState extends State<DriverManagement> {
   }
 
   void driverSave() {
-     Provider.of<AuthProvider>(context, listen: false).autoLogin().then((_) {
+    Provider.of<AuthProvider>(context, listen: false).autoLogin().then((_) {
       final token = Provider.of<AuthProvider>(context, listen: false).token;
       final apikey = Provider.of<AuthProvider>(context, listen: false).userid;
-      print(token);
-      print(apikey);
       Provider.of<DriverProvider>(context, listen: false)
           .addDriver(token, apikey, driverData)
           .then((_) {
@@ -41,6 +39,7 @@ class _DriverManagementState extends State<DriverManagement> {
         if (driveradd['status'] == true) {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(driveradd['message'])));
+          Navigator.of(context).pop();
         }
       });
     });
@@ -62,7 +61,7 @@ class _DriverManagementState extends State<DriverManagement> {
               CustomTextField(
                   label: "Enter Name",
                   onSaved: (value) {
-                    driverData['name']=value;
+                    driverData['name'] = value;
                   },
                   validate: (value) {
                     if (value.isEmpty) {

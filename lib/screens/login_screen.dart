@@ -7,6 +7,7 @@ import '../widgets/text_field.dart';
 import 'bus_list.dart';
 
 class LoginScreen extends StatefulWidget {
+    static const routenames = 'login';
   const LoginScreen({super.key});
 
   @override
@@ -34,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (auth['status'] == true) {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text(auth['message'])));
-        Navigator.of(context).pushNamed(BusList.routenames);
+        Navigator.of(context).pushReplacementNamed(BusList.routenames);
       } else {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text(auth['message'])));

@@ -1,6 +1,8 @@
+import 'package:bus_booking_app/models/bus.dart';
 import 'package:bus_booking_app/provider/auth_provider.dart';
 import 'package:bus_booking_app/provider/bus_provider.dart';
 import 'package:bus_booking_app/screens/bus_details.dart';
+import 'package:bus_booking_app/screens/driver_list.dart';
 
 import 'package:flutter/material.dart';
 
@@ -34,6 +36,10 @@ class _BusListState extends State<BusList> {
     super.initState();
   }
 
+  Future<bool> _onPop() async {
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     final busLists = Provider.of<BusProvider>(context).busList;
@@ -49,19 +55,35 @@ class _BusListState extends State<BusList> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    flex: 3,
-                    child: GridView.count(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 8,
-                      children: List.generate(choicess.length, (index) {
-                        return Grid(choicess: choicess, index: index);
-                      }),
-                    ),
+                  Row(
+                    children: [
+                      Flexible(
+                        child: Grid(
+                          title: "Bus",
+                          color: Colors.red,
+                          image: 'bus.png',
+                          subtitle: "Manage your Bus",
+                          onTap: () {
+                            Navigator.of(context).pushReplacementNamed(BusList.routenames);
+                          },
+                        ),
+                      ),
+                      Flexible(
+                        child: Grid(
+                          title: "Driver",
+                          color: Theme.of(context).primaryColor,
+                          image: 'driver.png',
+                          subtitle: "Manage your Driver",
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(DriverList.routenames);
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                   Text('${busLists.length} Buses Found '),
                   Expanded(
-                    flex: 6,
                     child: ListView.builder(
                         itemCount: busLists.length,
                         itemBuilder: (context, index) {

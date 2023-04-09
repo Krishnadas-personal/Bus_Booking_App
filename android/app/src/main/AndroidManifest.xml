@@ -2,7 +2,7 @@
     package="com.example.bus_booking_app">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="bus_booking_app"
+        android:label="moovbe"
         android:name="${applicationName}"
         android:icon="@mipmap/logo">
         <activity
